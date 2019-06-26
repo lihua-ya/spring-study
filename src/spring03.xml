@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 要想引入外部的配置值：
+         有两种方案：
+             在上下文（容器）配置一个Spring的特殊的bean：PropertySourcesPlaceholderConfigurer
+                 PropertySources ->属性源：属性值的来源
+                 Placeholder -> 占位符  input type="text" placeholder="请输入密码"
+                 Configurer -> 配置器
+
+         方案2：
+             使用 `context命名空间` 下面的一个特殊的标签:
+
+         使用方式都一样：
+             跟之前的el表达式一样：
+                 ${配置文件的key}
+      -->
+    <!-- <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        Spring中Resource资源类型的值可以用字符串来表示
+            常用的表示方法，比如我要标识类路径下的资源。
+                可以使用：classpath:com/example/demo/xx.properties
+            还有一种写法：
+                它的前缀是： classpath*:xx.properties
+
+        <property name="location" value="classpath:com/example/demo/xx.properties"/>
+        <property name="locations">
+            <array>
+                <value>classpath:com/example/demo/xx.properties</value>
+                <value>classpath:xx.properties</value>
+            </array>
+        </property>
+    </bean> -->
+    <context:property-placeholder location="classpath:xx.properties"/>
+    <bean id="ppp" class="com.entity.spring03.Bean">
+        <property name="driverClass" value="${db.driverClass}"/>
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="${db.username}"/>
+        <property name="password" value="${db.password}"/>
+    </bean>
+</beans>
