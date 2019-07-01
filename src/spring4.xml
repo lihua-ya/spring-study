@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--
+        开启Spring的:注解驱动的功能
+        base-package属性，用户指定开始扫描的根包名(那个包以及它的子包中，所有标记了特殊注解的Java类都会被发现)
+    -->
+    <context:component-scan base-package="com.entity.spring04"></context:component-scan>
+</beans>
